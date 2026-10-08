@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>ARCHER AI - Jarvis OS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>ARCHER AI - Master Controller (Jain Sir)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon-cyan: #00ffaa;
       --neon-glow: rgba(0, 255, 170, 0.45);
-      --bg-dark: #030806;
-      --panel-border: rgba(0, 255, 170, 0.25);
+      --bg-dark: #020906;
+      --panel-border: rgba(0, 255, 170, 0.3);
+      --text-muted: #84d9ba;
     }
 
     * {
@@ -32,61 +33,61 @@
       overflow: hidden;
     }
 
-    /* Device Container */
+    /* Chassis HUD Container */
     .archer-hud {
       width: 100%;
-      max-width: 430px;
+      max-width: 440px;
       height: 100vh;
-      max-height: 920px;
-      background: radial-gradient(circle at center, #061912 0%, #010805 85%);
+      max-height: 940px;
+      background: radial-gradient(circle at center, #052317 0%, #010805 85%);
       border: 2px solid var(--panel-border);
-      border-radius: 28px;
+      border-radius: 30px;
       display: flex;
       flex-direction: column;
       position: relative;
       padding: 16px;
-      box-shadow: 0 0 35px rgba(0, 255, 170, 0.15);
+      box-shadow: 0 0 45px rgba(0, 255, 170, 0.22);
       overflow: hidden;
     }
 
-    /* Header Bar */
+    /* Top Header */
     .top-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 4px 12px;
+      padding: 4px 6px 12px;
       border-bottom: 1px solid var(--panel-border);
     }
     .header-title {
       font-family: 'Orbitron', monospace;
-      font-size: 17px;
+      font-size: 18px;
       letter-spacing: 3px;
-      font-weight: 700;
+      font-weight: 800;
       text-shadow: 0 0 10px var(--neon-cyan);
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .online-indicator {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       background: var(--neon-cyan);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--neon-cyan);
-      animation: pulse 1.5s infinite alternate;
+      box-shadow: 0 0 12px var(--neon-cyan);
+      animation: pulse 1.4s infinite alternate;
     }
     @keyframes pulse {
       0% { opacity: 0.3; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1.25); }
+      100% { opacity: 1; transform: scale(1.3); }
     }
 
     /* Dual Transcript Box */
     .transcript-container {
       position: relative;
-      margin-top: 14px;
+      margin-top: 12px;
       border: 1px solid var(--panel-border);
       border-radius: 12px;
-      background: rgba(0, 255, 170, 0.02);
+      background: rgba(0, 255, 170, 0.03);
       padding: 12px;
       backdrop-filter: blur(8px);
     }
@@ -94,7 +95,7 @@
       position: absolute;
       top: -9px;
       left: 18px;
-      background: #020b08;
+      background: #020906;
       padding: 0 8px;
       font-family: 'Orbitron', sans-serif;
       font-size: 10px;
@@ -105,13 +106,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      min-height: 70px;
+      min-height: 75px;
       font-size: 13px;
     }
     .col-header {
       font-family: 'Orbitron', monospace;
       font-size: 10px;
-      color: #79ffe1;
+      color: var(--text-muted);
       margin-bottom: 5px;
       display: flex;
       align-items: center;
@@ -119,13 +120,13 @@
     }
     .col-content {
       line-height: 1.35;
-      color: #e0fff4;
+      color: #e5fff5;
       font-weight: 600;
-      max-height: 80px;
+      max-height: 82px;
       overflow-y: auto;
     }
 
-    /* Core Middle Stage */
+    /* Central 3D Holo Orb Viewport */
     .stage {
       flex: 1;
       position: relative;
@@ -133,8 +134,6 @@
       align-items: center;
       margin: 8px 0;
     }
-
-    /* Left Hologram Action Badges */
     .left-controls {
       position: absolute;
       left: 0;
@@ -144,10 +143,10 @@
       gap: 10px;
     }
     .hud-chip {
-      background: rgba(0, 25, 18, 0.6);
+      background: rgba(0, 28, 19, 0.65);
       border: 1px solid var(--panel-border);
       color: var(--neon-cyan);
-      padding: 6px 14px;
+      padding: 7px 14px;
       border-radius: 20px;
       font-size: 11px;
       font-weight: 700;
@@ -156,7 +155,7 @@
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
       box-shadow: 0 0 12px rgba(0, 255, 170, 0.08);
       transition: all 0.2s ease;
     }
@@ -165,49 +164,38 @@
       background: var(--neon-cyan);
       color: #000;
     }
-
-    /* 3D Holo Core Container */
     #holo-core {
       width: 100%;
       height: 100%;
     }
 
-    /* Bottom Control Trigger */
+    /* Zero Touch Control Badge */
     .action-panel {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 10px;
     }
-    .mic-button {
-      background: rgba(0, 255, 170, 0.08);
+    .zero-touch-badge {
+      background: rgba(0, 255, 170, 0.12);
       border: 1.5px solid var(--neon-cyan);
       color: var(--neon-cyan);
       border-radius: 30px;
-      padding: 10px 32px;
+      padding: 9px 28px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 2px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       box-shadow: 0 0 20px rgba(0, 255, 170, 0.25);
-      transition: all 0.25s ease;
-    }
-    .mic-button.listening {
-      background: var(--neon-cyan);
-      color: #030806;
-      box-shadow: 0 0 35px var(--neon-cyan);
-      animation: listeningPulse 1s infinite alternate;
+      animation: listeningPulse 1.2s infinite alternate;
     }
     @keyframes listeningPulse {
-      0% { transform: scale(0.98); }
-      100% { transform: scale(1.05); }
+      0% { opacity: 0.8; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1.03); box-shadow: 0 0 30px var(--neon-cyan); }
     }
 
-    /* Multi-Widget Grid */
+    /* Data Widgets Grid */
     .hud-widgets {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -244,77 +232,76 @@
     }
   </style>
 
-  <!-- Three.js Library -->
+  <!-- Three.js for 3D Holographic Rendering -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
+<body onclick="startAutonomousEngine()">
 
   <div class="archer-hud">
-    <!-- Top System Header -->
+    <!-- Header -->
     <div class="top-header">
       <div class="online-indicator"></div>
       <div class="header-title">ARCHER AI</div>
-      <span style="font-size: 11px; letter-spacing: 1px;">USER: JACK</span>
+      <span style="font-size: 11px; letter-spacing: 1px;">OWNER: JAIN SIR</span>
     </div>
 
-    <!-- Live Transcript HUD -->
+    <!-- Live Transcript Window -->
     <div class="transcript-container">
       <span class="transcript-tag">TRANSCRIPT</span>
       <div class="dialogue-grid">
         <div>
           <div class="col-header">● ARCHER</div>
-          <div class="col-content" id="ai-output">Hello Jack Sir! Main Archer AI hoon. Batayiye, aaj kya command hai?</div>
+          <div class="col-content" id="ai-output">Screen par ek baar touch karke mic allow karein Jain sir. Uske baad mobile ko bina chhue direct muh se aadesh dijiye!</div>
         </div>
         <div style="border-left: 1px solid var(--panel-border); padding-left: 10px;">
-          <div class="col-header">● JACK</div>
-          <div class="col-content" id="user-output">"LISTEN" dabayein aur kuch bhi poochein...</div>
+          <div class="col-header">● JAIN SIR</div>
+          <div class="col-content" id="user-output">Listening standby mode me hai...</div>
         </div>
       </div>
     </div>
 
-    <!-- Central 3D Holo Realm -->
+    <!-- Central 3D Holo Orb Viewport -->
     <div class="stage">
       <div class="left-controls">
-        <button class="hud-chip" onclick="processCommand('open memory')">🧠 MEMORY</button>
-        <button class="hud-chip" onclick="processCommand('open chat')">💬 CHAT</button>
-        <button class="hud-chip" onclick="processCommand('open soul')">✨ SOUL</button>
-        <button class="hud-chip" onclick="processCommand('open settings')">⚙️ SETTINGS</button>
+        <button class="hud-chip" onclick="executeCommand('open memory')">🧠 MEMORY</button>
+        <button class="hud-chip" onclick="executeCommand('open chat')">💬 CHAT</button>
+        <button class="hud-chip" onclick="executeCommand('open soul')">✨ SOUL</button>
+        <button class="hud-chip" onclick="executeCommand('open settings')">⚙️ SETTINGS</button>
       </div>
       <div id="holo-core"></div>
     </div>
 
-    <!-- Action Mic Trigger -->
+    <!-- Hands-Free State Badge -->
     <div class="action-panel">
-      <button class="mic-button" id="mic-trigger">
-        <span id="mic-icon">🎙️</span> <span id="mic-label">LISTEN</span>
-      </button>
+      <div class="zero-touch-badge" id="hud-status">TOUCH ONCE TO ACTIVATE</div>
+      <span style="font-size: 10px; opacity: 0.8;">100% HANDS-FREE AUTOMATION ACTIVE</span>
     </div>
 
-    <!-- Bottom Data Widgets -->
+    <!-- Widgets -->
     <div class="hud-widgets">
       <div class="widget">
-        <div class="widget-head"><span>SYSTEM STATUS</span> <span>SECURE</span></div>
-        <ul id="status-list">
-          <li>• Neural Core: Active</li>
-          <li>• Owner: Jack Sir</li>
-          <li>• Voice Link: Synced</li>
+        <div class="widget-head"><span>TOUCH-FREE APPS</span> <span>LIVE</span></div>
+        <ul>
+          <li>• YouTube auto-player</li>
+          <li>• WhatsApp message & call</li>
+          <li>• Phone dialer executor</li>
         </ul>
       </div>
       <div class="widget">
-        <div class="widget-head"><span>COMMAND LOGS</span> <span style="color:#00ffaa;">(LIVE)</span></div>
+        <div class="widget-head"><span>DEVICE INTENTS</span> <span>READY</span></div>
         <ul>
-          <li>✓ Voice model loaded</li>
-          <li>☐ Ready for queries</li>
-          <li>☐ Ready for actions</li>
+          <li>• Flashlight & Camera</li>
+          <li>• Battery status monitor</li>
+          <li>• Real-time Maps & Clock</li>
         </ul>
       </div>
     </div>
   </div>
 
   <script>
-    /* -------------------------------------------------------------
-       1. Three.js: Holographic Sphere & Rings Animation
-       ------------------------------------------------------------- */
+    /* =============================================================
+       1. Three.js: 3D Hologram Particle Sphere & Dual Orbit Rings
+       ============================================================= */
     const stage = document.getElementById('holo-core');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, stage.clientWidth / stage.clientHeight, 0.1, 1000);
@@ -362,151 +349,229 @@
     renderLoop();
 
     window.addEventListener('resize', () => {
+      if (!stage.clientWidth) return;
       camera.aspect = stage.clientWidth / stage.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(stage.clientWidth, stage.clientHeight);
     });
 
-    /* -------------------------------------------------------------
-       2. Voice Recognition & Speech Synthesizer
-       ------------------------------------------------------------- */
-    const micBtn = document.getElementById('mic-trigger');
-    const micLabel = document.getElementById('mic-label');
-    const micIcon = document.getElementById('mic-icon');
+    /* =============================================================
+       2. Zero-Touch Voice Engine & Text-To-Speech (Continuous Mic)
+       ============================================================= */
     const userOutput = document.getElementById('user-output');
     const aiOutput = document.getElementById('ai-output');
+    const hudStatus = document.getElementById('hud-status');
+    let isInitialized = false;
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition;
+    let recognition = null;
 
-    if (SpeechRecognition) {
+    function startAutonomousEngine() {
+      if (isInitialized) return;
+      isInitialized = true;
+
+      if (!SpeechRecognition) {
+        aiOutput.innerText = "Browser Web Speech support nahi karta. Google Chrome use karein.";
+        return;
+      }
+
       recognition = new SpeechRecognition();
-      recognition.lang = 'hi-IN'; // Hindi + English mix support
+      recognition.lang = 'hi-IN'; // Hindi + English auto-detection
+      recognition.continuous = true;
       recognition.interimResults = false;
 
       recognition.onstart = () => {
-        micBtn.classList.add('listening');
-        micLabel.innerText = 'LISTENING...';
-        micIcon.innerText = '🔴';
-        currentSpeed = 0.04;
+        hudStatus.innerText = "● LIVE LISTENING (ZERO TOUCH)";
+        currentSpeed = 0.035;
       };
 
       recognition.onresult = (e) => {
-        const query = e.results[0][0].transcript;
-        userOutput.innerText = query;
-        processCommand(query);
+        const lastIdx = e.results.length - 1;
+        const voiceCmd = e.results[lastIdx][0].transcript;
+        userOutput.innerText = voiceCmd;
+        executeCommand(voiceCmd);
       };
 
       recognition.onerror = () => {
-        aiOutput.innerText = "Awaz thek se sunayi nahi di, Jack sir dobara bole.";
+        // Automatic silent recovery
       };
 
       recognition.onend = () => {
-        micBtn.classList.remove('listening');
-        micLabel.innerText = 'LISTEN';
-        micIcon.innerText = '🎙️';
         currentSpeed = baseSpeed;
+        setTimeout(() => {
+          try { recognition.start(); } catch(err){}
+        }, 300);
       };
 
-      micBtn.addEventListener('click', () => {
-        try {
-          recognition.start();
-        } catch (err) {
-          recognition.stop();
-        }
-      });
-    } else {
-      userOutput.innerText = "Speech API supported nahi hai. Chrome browser use karein.";
+      try {
+        recognition.start();
+        speakOut("Archer system fully active ho chuka hai Jain sir. Ab aap jo bhi bolenge, main bina touch kiye wahi execute karunga.");
+      } catch(err){}
     }
 
-    function speakOut(message) {
+    function speakOut(message, callback) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(message);
       utter.lang = 'hi-IN';
       utter.rate = 1.05;
       utter.pitch = 1.0;
       utter.onstart = () => { currentSpeed = 0.025; };
-      utter.onend = () => { currentSpeed = baseSpeed; };
+      utter.onend = () => {
+        currentSpeed = baseSpeed;
+        if (callback) callback();
+      };
       window.speechSynthesis.speak(utter);
     }
 
-    /* -------------------------------------------------------------
-       3. Advanced Real Intelligence & Action Engine (Smart Replies)
-       ------------------------------------------------------------- */
-    function processCommand(input) {
-      const text = input.toLowerCase();
+    /* =============================================================
+       3. 100% Real Commands Engine (Autonomous Execution Matrix)
+       ============================================================= */
+    function executeCommand(input) {
+      const q = input.toLowerCase();
       let response = "";
+      let actionCallback = null;
 
-      // Q: Who are you / Tum kaun ho?
-      if (text.includes("who are you") || text.includes("kaun ho") || text.includes("tumhara naam") || text.includes("what is your name")) {
-        response = `Main Archer AI hoon, Jack sir ka personal futuristic digital companion. Main aapke commands execute karne aur system manage karne ke liye banaya gaya hoon.`;
-      }
-      
-      // Q: Who made you / Kisne banaya hai?
-      else if (text.includes("made you") || text.includes("created you") || text.includes("kisne banaya")) {
-        response = `Mujhe ek advanced developer aur visionary Jack sir ke liye design kiya gaya hai taaki futuristic Jarvis jaisa experience mil sake.`;
+      // 1. YouTube Video & Music Playback
+      if (q.includes("youtube") || q.includes("gana") || q.includes("video") || q.includes("song")) {
+        let term = q.replace(/youtube|play|chalao|gana|bajao|song|video|open|kholo|dikhao/g, "").trim();
+        response = `Ji Jain sir, YouTube par ${term || "video"} shuru kiya ja raha hai.`;
+        actionCallback = () => {
+          window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(term || "trending music")}`, "_blank");
+        };
       }
 
-      // Action: YouTube Play / Search
-      else if (text.includes("youtube")) {
-        if (text.includes("play") || text.includes("chalao") || text.includes("gana") || text.includes("bajao")) {
-          const query = text.replace(/youtube|play|chalao|gana|bajao/g, "").trim();
-          response = `Ji Jack sir, YouTube par ${query || "music"} play kiya ja raha hai.`;
-          window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query || "lofi songs")}`, '_blank');
+      // 2. WhatsApp Direct Messaging & Chat
+      else if (q.includes("whatsapp")) {
+        if (q.includes("abhishek")) {
+          response = "Abhishek ka WhatsApp conversation open ho raha hai Jain sir.";
+          actionCallback = () => { window.open("https://api.whatsapp.com/send?phone=919876543210", "_blank"); };
+        } else if (q.includes("message") || q.includes("bhejo") || q.includes("send")) {
+          let msg = q.replace(/whatsapp|message|bhejo|send|karo|ko/g, "").trim();
+          response = "WhatsApp message interface load ho raha hai.";
+          actionCallback = () => { window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, "_blank"); };
         } else {
-          response = "YouTube open kar raha hoon Jack sir.";
-          window.open("https://www.youtube.com", '_blank');
+          response = "WhatsApp launch kiya ja raha hai Jain sir.";
+          actionCallback = () => { window.open("whatsapp://", "_blank"); };
         }
       }
 
-      // Action: Google Search
-      else if (text.includes("search") || text.includes("khojo") || text.includes("dhundho")) {
-        const query = text.replace(/search|khojo|dhundho|karo/g, "").trim();
-        response = `Google par '${query}' search kiya ja raha hai Jack sir.`;
-        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+      // 3. Phone Call & Contacts Dialer
+      else if (q.includes("call") || q.includes("phone")) {
+        if (q.includes("abhishek")) {
+          response = "Jain sir, Abhishek ko call milaya ja raha hai.";
+          actionCallback = () => { window.location.href = "tel:+919876543210"; };
+        } else {
+          response = "Phone dialer launch kar raha hoon Jain sir.";
+          actionCallback = () => { window.location.href = "tel:"; };
+        }
       }
 
-      // Action: Time & Date
-      else if (text.includes("time") || text.includes("samay") || text.includes("baje")) {
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' });
-        response = `Jack sir, abhi samay ho raha hai ${timeStr}.`;
-      }
-      else if (text.includes("date") || text.includes("tarikh")) {
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('hi-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-        response = `Aaj ki tarikh hai ${dateStr}.`;
-      }
-
-      // Action: Camera
-      else if (text.includes("camera") || text.includes("photo")) {
-        response = "Camera feed initialize ki ja rahi hai Jack sir.";
-        navigator.mediaDevices.getUserMedia({ video: true })
-          .then(stream => {
-            alert("Camera link active! Permission granted.");
-            stream.getTracks().forEach(track => track.stop());
-          })
-          .catch(() => alert("Camera access deny ho gaya hai."));
+      // 4. Torch / Flashlight Control
+      else if (q.includes("torch") || q.includes("flash")) {
+        response = "Torch trigger initialize ki ja rahi hai.";
+        actionCallback = () => {
+          navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+            .then(stream => {
+              const track = stream.getVideoTracks()[0];
+              if (track.getCapabilities().torch) {
+                track.applyConstraints({ advanced: [{ torch: true }] });
+                setTimeout(() => track.stop(), 6000);
+              } else {
+                alert("Device flashlight direct browser access limited hai.");
+                track.stop();
+              }
+            })
+            .catch(() => alert("Camera/Flash permission allow karein."));
+        };
       }
 
-      // HUD Buttons
-      else if (text.includes("open memory")) {
-        response = "Neural Memory bank secure hai Jack sir. Sabhi logs synchronized hain.";
-      }
-      else if (text.includes("open soul")) {
-        response = "Soul core sync status 100% optimal hai Jack sir.";
-      }
-      else if (text.includes("open settings")) {
-        response = "System configuration panel open kiya ja raha hai.";
+      // 5. Camera Control
+      else if (q.includes("camera") || q.includes("photo") || q.includes("selfie")) {
+        response = "Camera initialize ho raha hai Jain sir.";
+        actionCallback = () => {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+              alert("Camera stream online!");
+              stream.getTracks().forEach(t => t.stop());
+            })
+            .catch(() => alert("Camera permission allow karein."));
+        };
       }
 
-      // General intelligent fallback
+      // 6. Google Search & Web Finder
+      else if (q.includes("search") || q.includes("google") || q.includes("khojo") || q.includes("dhundho")) {
+        let query = q.replace(/search|google|khojo|dhundho|karo/g, "").trim();
+        response = `Google par '${query}' search kar raha hoon Jain sir.`;
+        actionCallback = () => { window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, "_blank"); };
+      }
+
+      // 7. Google Maps / Location
+      else if (q.includes("map") || q.includes("location") || q.includes("rasta")) {
+        let loc = q.replace(/map|location|rasta|dikhaye|kaha hai/g, "").trim();
+        response = `Google Maps par ${loc || "live location"} load ki ja rahi hai.`;
+        actionCallback = () => { window.open(`https://www.google.com/maps/search/${encodeURIComponent(loc || "current location")}`, "_blank"); };
+      }
+
+      // 8. Battery Status
+      else if (q.includes("battery")) {
+        if (navigator.getBattery) {
+          navigator.getBattery().then(batt => {
+            const level = Math.round(batt.level * 100);
+            const status = `Jain sir, battery level abhi ${level}% hai.`;
+            aiOutput.innerText = status;
+            speakOut(status);
+          });
+          return;
+        } else {
+          response = "Battery status API restricted hai.";
+        }
+      }
+
+      // 9. Time & Date
+      else if (q.includes("time") || q.includes("samay") || q.includes("baje")) {
+        const timeNow = new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' });
+        response = `Jain sir, abhi time hua hai ${timeNow}.`;
+      }
+      else if (q.includes("date") || q.includes("tarikh")) {
+        const dateNow = new Date().toLocaleDateString('hi-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+        response = `Aaj ki tarikh hai ${dateNow}.`;
+      }
+
+      // 10. Calculator
+      else if (q.includes("calculate") || q.includes("hisab") || q.includes("calculator")) {
+        response = "Calculator launch kiya ja raha hai.";
+        actionCallback = () => { window.open("https://www.google.com/search?q=calculator", "_blank"); };
+      }
+
+      // 11. Weather
+      else if (q.includes("weather") || q.includes("mausam")) {
+        response = "Live weather report open ho rahi hai Jain sir.";
+        actionCallback = () => { window.open("https://www.google.com/search?q=weather+today", "_blank"); };
+      }
+
+      // 12. Identity & Creator Verification
+      else if (q.includes("who are you") || q.includes("kaun ho") || q.includes("kisne banaya") || q.includes("kiska ho")) {
+        response = "Main Archer AI hoon, Jain sir ka fully personal autonomous assistant. Mera ek hi kaam hai: Jain sir ke har order ko bina touch kiye execute karna.";
+      }
+
+      // 13. HUD Module Badges
+      else if (q.includes("open memory")) {
+        response = "Memory core database 100% secure hai Jain sir.";
+      }
+      else if (q.includes("open soul")) {
+        response = "Soul matrix connection stable hai Jain sir.";
+      }
+      else if (q.includes("open settings")) {
+        response = "Settings panel activate kar diya gaya hai.";
+      }
+
+      // 14. Fallback Handler
       else {
-        response = `Maine aapka command note kar liya hai Jack sir: "${input}". Is par processing shuru kar di gayi hai.`;
+        response = `Jain sir, aadesh mila: "${input}". Main turant is par action perform kar raha hoon.`;
       }
 
       aiOutput.innerText = response;
-      speakOut(response);
+      speakOut(response, actionCallback);
     }
   </script>
 </body>
