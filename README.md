@@ -1,5 +1,3 @@
-# JAIN
-AI 
 <!DOCTYPE html>
 <html lang="hi">
 <head>
